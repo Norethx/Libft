@@ -6,13 +6,13 @@
 /*   By: rgomes-d <rgomes-d@42sp.gov.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 20:02:48 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/11 20:04:07 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/14 10:07:19 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include	"libft.h"
+
 int	ft_isdigit(int c)
 {
-	if (c > 47 && c < 58)
-		return (2048);
-	return (0);
+	return (c > 47 && c < 58);
 }
