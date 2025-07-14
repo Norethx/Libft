@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@42sp.gov.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:34:27 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/14 16:50:11 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/14 17:18:46 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_bzero(void *s, size_t n)
 {
-	while(n > 0)
-		((unsigned char*)s)[(n--) - 1] = 0;
+	while (n > 0)
+		((unsigned char *)s)[(n--) - 1] = 0;
 	return (0);
 }
