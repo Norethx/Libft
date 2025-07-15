@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-d <rgomes-d@42sp.gov.br>            +#+  +:+       +#+        */
+/*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/14 19:21:06 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:50:45 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
+int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+char	*ft_strchr(char *s, int c);
+char	*ft_strrchr(char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:56:36 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/15 12:31:59 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/15 12:38:25 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/15 12:42:01 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_tolower(int c)
 {
-	while (n > 0)
-	{
-		((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
-		n--;
-	}
-	return (dest);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return ((unsigned char) c);
 }
