@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 11:21:39 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/16 12:23:31 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/16 12:32:22 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/16 12:49:05 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+char	*ft_strdup(const char *s)
 {
-	size_t			len_dest;
-	size_t			len_src;
+	size_t			size;
 	unsigned long	i;
+	char			*new_str;
 
-	len_dest = ft_strlen(dest);
-	len_src = ft_strlen(src);
 	i = 0;
-	if (len_dest >= size)
-		return (len_src + size);
-	while (i < ((size - len_dest) - 1))
+	size = ft_strlen(s);
+	new_str = ft_calloc(1, size);
+	while (i <= size)
 	{
-		dest[i + len_dest] = src[i];
+		new_str[i] = s[i];
 		i++;
 	}
-	dest[len_dest + i] = '\0';
-	return (len_src + len_dest);
+	return (new_str);
 }
