@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-d <rgomes-d@42sp.gov.br>            +#+  +:+       +#+        */
+/*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:07:33 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/14 12:15:40 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/16 11:16:16 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int	ft_isascii(int c)
 {
+	unsigned char	ch;
+
+	ch = c;
 	return (c >= 0 && c <= 127);
 }
