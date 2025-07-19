@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/nfs/homes/rgomes-d/git_Noreth/Libft",
-      "program": "/nfs/homes/rgomes-d/git_Noreth/Libft/a.out",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/a.out",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

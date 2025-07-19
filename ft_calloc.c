@@ -28,8 +28,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	if ((((i_nmemb * i_size) / i_size) != nmemb) )
 		return ((void *)0);
-
 	n_arr = malloc(size * nmemb);
+	if (!n_arr)
 	ft_bzero (n_arr, (nmemb * size));
 	return (n_arr);
 }

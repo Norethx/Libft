@@ -14,8 +14,11 @@
 
 int	ft_isascii(int c)
 {
-	unsigned char	ch;
+	return ((unsigned char)c <= 127);
+}
 
-	ch = c;
-	return (c >= 0 && c <= 127);
+int	main(void)
+{
+	ft_isascii('a');
+	printf("akidk");
 }
