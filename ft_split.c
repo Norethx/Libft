@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:33:15 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/19 18:36:30 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/20 01:18:52 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,49 @@ static int	ft_count_words(const char *s, char c)
 	quantity_words = 0;
 	i = 0;
 	while (s[i++] != 0)
-		if (((ft_isprint(s[i]) && s[i] != c))
-			&& (s[i + 1] == c || s[i + 1] == 0))
+		if (((s[i] != 0 && s[i] != c)) && (s[i + 1] == c || s[i + 1] == 0))
 			quantity_words++;
 	return (quantity_words);
 }
 
+static void	*ft_free_array(void **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != ((void *)0))
+	{
+		free(s[i]);
+		i++;
+	}
+	free (s);
+	return (((void *)0));
+}
+
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		i_word;
+	int		begin;
+	int		end;
 	char	**set_words;
 	int		i_arr;
 
-	i = 0;
+	begin = 0;
 	i_arr = 0;
 	set_words = (char **)ft_calloc((ft_count_words(s, c) + 1), sizeof(char *));
-	while (s[i] != 0)
+	if (!set_words)
+		return ((void *)0);
+	while (s[begin++] != 0)
 	{
-		i_word = 0;
-		while (s[i + i_word] != c)
+		end = 0;
+		while (s[(begin - 1) + end] != c && s[(begin - 1) + end] != 0)
+			end++;
+		if (end > 0)
 		{
-			i_word++;
-			if (s[i + i_word] == c || s[i + i_word] == 0)
-			{
-				set_words[i_arr++] = ft_substr(s, i, i_word);
-				i += (i_word - 1);
-				break ;
-			}
+			set_words[i_arr] = ft_substr(s, (begin - 1), end);
+			if (!set_words[i_arr++])
+				return (ft_free_array((void **)set_words));
+			begin += end - 1;
 		}
-		i++;
 	}
-	set_words[i_arr] = ((void *)0);
 	return (set_words);
 }

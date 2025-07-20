@@ -37,6 +37,8 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 ft_putnbr_fd.c
 
+BONUS := ft_lstnew_bonus.c \
+
 OBJTS := $(SRCS:.c=.o)
 
 all: $(NAME)

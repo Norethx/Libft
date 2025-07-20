@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 11:24:58 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/20 01:10:39 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/19 19:46:53 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/20 01:11:14 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	void			*n_arr;
-	unsigned int	i_nmemb;
-	unsigned int	i_size;
+	t_list	*new_node;
 
-	i_nmemb = nmemb;
-	i_size = size;
-	if (nmemb == 0 || size == 0)
-	{
-		n_arr = malloc(1);
-		ft_bzero(n_arr, 1);
-		return (n_arr);
-	}
-	if ((((i_nmemb * i_size) / i_size) != nmemb))
-		return ((void *)0);
-	n_arr = malloc(size * nmemb);
-	ft_bzero(n_arr, (nmemb * size));
-	return (n_arr);
+	new_node = calloc(sizeof(void *), 2);
+	new_node -> content = content;
+	return (new_node);
 }
