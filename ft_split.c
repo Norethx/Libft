@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:33:15 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/20 01:18:52 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:47:36 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	**ft_split(char const *s, char c)
 	set_words = (char **)ft_calloc((ft_count_words(s, c) + 1), sizeof(char *));
 	if (!set_words)
 		return ((void *)0);
-	while (s[begin++] != 0)
+	while (s[begin] != 0)
 	{
 		end = 0;
-		while (s[(begin - 1) + end] != c && s[(begin - 1) + end] != 0)
+		while (s[begin + end] != c && s[begin + end] != 0)
 			end++;
 		if (end > 0)
 		{
@@ -63,6 +63,7 @@ char	**ft_split(char const *s, char c)
 				return (ft_free_array((void **)set_words));
 			begin += end - 1;
 		}
+		begin++;
 	}
 	return (set_words);
 }

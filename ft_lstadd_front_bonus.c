@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 19:46:53 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/20 22:25:15 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/20 20:35:06 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/20 22:00:46 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *new_node;
-
-	new_node = calloc(sizeof(t_list), 1);
-	if (!new_node)
-		return ((void *)0);
-	new_node->content = (void *)content;
-	return (new_node);
+	new->next = lst[0];
+	lst[0] = new;
 }

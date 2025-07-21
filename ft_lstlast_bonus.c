@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 19:46:53 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/20 22:25:15 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/20 22:25:19 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/20 23:17:13 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *new_node;
+	t_list	*aux;
 
-	new_node = calloc(sizeof(t_list), 1);
-	if (!new_node)
+	if (!lst)
 		return ((void *)0);
-	new_node->content = (void *)content;
-	return (new_node);
+	aux = lst;
+	while (aux->next != 0)
+		aux = aux->next;
+	return (aux);
 }

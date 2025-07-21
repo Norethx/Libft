@@ -37,7 +37,13 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 ft_putnbr_fd.c
 
-BONUS := ft_lstnew_bonus.c \
+SRC_BONUS := ft_lstnew_bonus.c \
+ft_lstadd_front_bonus.c \
+ft_lstsize_bonus.c \
+ft_lstlast_bonus.c \
+ft_lstadd_back_bonus.c
+
+BONUS := $(SRC_BONUS:.c=.o)
 
 OBJTS := $(SRCS:.c=.o)
 
@@ -49,9 +55,12 @@ $(NAME): $(OBJTS)
 %.o: ./%.c
 		$(CC) $(CFLAGS) $< -o $@
 
+bonus:
+		$(MAKE) OBJTS="$(OBJTS) $(BONUS)" all
+
 .PHONY: clean
 clean:
-		rm -f $(OBJTS)
+		rm -f $(OBJTS) $(BONUS)
 
 .PHONY: fclean
 fclean: clean
