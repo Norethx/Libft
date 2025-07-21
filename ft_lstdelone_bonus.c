@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 19:46:53 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/21 10:49:18 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/21 11:11:40 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/21 15:52:50 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*new_node;
-
-	new_node = calloc(sizeof(t_list), 1);
-	if (!new_node)
-		return ((void *)0);
-	new_node->content = (void *)content;
-	return (new_node);
+	if (lst == 0 || del == 0)
+		return ;
+	(del)(lst->content);
+	(del)(lst);
 }

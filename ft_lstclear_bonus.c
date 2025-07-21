@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 19:46:53 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/21 10:49:18 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/21 11:38:52 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/07/21 15:32:09 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*new_node;
+	t_list	*aux;
+	t_list	*aux_del;
 
-	new_node = calloc(sizeof(t_list), 1);
-	if (!new_node)
-		return ((void *)0);
-	new_node->content = (void *)content;
-	return (new_node);
+	aux = *lst;
+	if (*lst == ((void *)0) || del == ((void *)0))
+		return ;
+	while (aux->next != ((void *)0))
+	{
+		aux_del = aux;
+		aux = aux->next;
+		ft_lstdelone(aux_del, (del));
+	}
+	ft_lstdelone(aux, (del));
+	*lst = ((void *)0);
+	return ;
 }
