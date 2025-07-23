@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 19:32:27 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/16 18:54:12 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/07/22 23:15:59 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	index = 0;
+	if (!big || !little)
+		return ((void *)0);
 	while (big[i] != '\0' && i < len)
 	{
 		while ((big[i + index] == little[index]) && (i + index) < len)
@@ -30,7 +32,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		i++;
 		index = 0;
 	}
-	if (little[index] == big[i] && big[i] == '\0')
-		return (&((char *)big)[i]);
+	if (*big == *little && ft_strlen(big) == 0)
+		return (&((char *)big)[0]);
 	return ((void *)0);
 }
