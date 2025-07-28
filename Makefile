@@ -62,11 +62,11 @@ $(NAME): $(OBJTS)
 bonus:
 		$(MAKE) OBJTS="$(OBJTS) $(BONUS)" all
 
-.PHONY: clean
+.PHONY: clean fclean re
+
 clean:
 		rm -f $(OBJTS) $(BONUS)
 
-.PHONY: fclean
 fclean: clean
 		rm -f $(NAME)
 
