@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:51:10 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/10 13:48:09 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/10 14:45:15 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,13 @@ static void	ft_aux_printf(t_list **new, va_list args, const char *str,
 
 static unsigned int	ft_putstr_lst(void *s)
 {
-	int	i;
 	int	len;
 
-	i = 0;
 	len = 0;
-	if (((char *)s)[i] == 0)
-	{
-		len += write(1, &((char *)s)[i], 1);
-		return (len);
-	}
-	while (((char *)s)[i] != '\0')
-	{
-		len += write(1, &((char *)s)[i], 1);
-		i++;
-	}
+	if (((char *)s)[0] == 0)
+		len += write(1, &((char *)s)[0], 1);
+	else
+		len += ft_putstr_fd((char *)s,1);
 	return (len);
 }
 
