@@ -1,7 +1,9 @@
 NAME := libft.a
+
 CC := cc
+
 CFLAGS := -Wall -Wextra -Werror -c
-INCLUDES := includes
+
 SRCS := ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \
@@ -35,19 +37,24 @@ ft_striteri.c \
 ft_putchar_fd.c \
 ft_putstr_fd.c \
 ft_putendl_fd.c \
-ft_putnbr_fd.c
-
-SRC_BONUS := ft_lstnew_bonus.c \
-ft_lstadd_front_bonus.c \
-ft_lstsize_bonus.c \
-ft_lstlast_bonus.c \
-ft_lstadd_back_bonus.c \
-ft_lstdelone_bonus.c \
-ft_lstclear_bonus.c \
-ft_lstiter_bonus.c \
-ft_lstmap_bonus.c
-
-BONUS := $(SRC_BONUS:.c=.o)
+ft_putnbr_fd.c \
+ft_lstnew.c \
+ft_lstadd_front.c \
+ft_lstsize.c \
+ft_lstlast.c \
+ft_lstadd_back.c \
+ft_lstdelone.c \
+ft_lstclear.c \
+ft_lstiter.c \
+ft_lstmap.c \
+ft_lltoa.c \
+ft_uitoa.c \
+ft_uitoa_base.c \
+ft_ulltoa_base.c \
+ft_memtoa_base.c \
+ft_printf.c \
+get_next_line.c \
+get_next_line_utils.c
 
 OBJTS := $(SRCS:.c=.o)
 
@@ -59,9 +66,6 @@ $(NAME): $(OBJTS)
 %.o: ./%.c
 		$(CC) $(CFLAGS) $< -o $@
 
-bonus:
-		$(MAKE) OBJTS="$(OBJTS) $(BONUS)" all
-
 .PHONY: clean fclean re
 
 clean:
@@ -71,3 +75,6 @@ fclean: clean
 		rm -f $(NAME)
 
 re: fclean all
+
+get_var:
+	@echo $(OBJTS)

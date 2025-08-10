@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/21 16:14:55 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/10 13:42:16 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
+# define FILE_DESCRIPTORS 1024
 
 typedef struct s_list
 {
@@ -64,7 +72,17 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+int		ft_lstiter(t_list *lst, unsigned int (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*ft_uitoa_base(unsigned int n, char *base);
+char	*ft_lltoa(long long n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_ulltoa_base(unsigned long long n, char *base);
+char	*ft_memtoa_base(unsigned long long n, char *base);
+void	ft_lstsort(t_list *lst);
+int		ft_printf(const char *str, ...);
+char				*get_next_line(int fd);
+void				*ft_cleanls(t_list **lst, int t_clean);
+int					ft_lst_content_substr(t_list **lst, int loc, char *sec);
 
 #endif
