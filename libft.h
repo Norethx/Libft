@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/10 14:34:39 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/16 20:06:16 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,28 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 1
 # endif
 
 # define FILE_DESCRIPTORS 1024
 
-typedef struct s_list
-{
+typedef struct s_list {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+	struct s_list	*prev;
+	int				marked;
+}   t_list;
+
+typedef struct s_ext_list {
+	t_list			*head;
+	t_list			*tail;
+}	t_ext_list;
+
+typedef struct s_gb_list {
+	t_ext_list		**roots;
+	int				count;
+	int				capacity;
+}	t_gb_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -82,7 +94,7 @@ char	*ft_memtoa_base(unsigned long long n, char *base);
 void	ft_lstsort(t_list *lst);
 int		ft_printf(const char *str, ...);
 char				*get_next_line(int fd);
-void				*ft_cleanls(t_list **lst, int t_clean);
+void				*ft_cleanls(t_ext_list **lst);
 int					ft_lst_content_substr(t_list **lst, int loc, char *sec);
 
 #endif
