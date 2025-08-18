@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gb_expand_capacity.c                            :+:      :+:    :+:   */
+/*   ft_ext_remove_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:05:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 02:13:46 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/08/18 02:11:19 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/18 02:15:20 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_gb_expand_capacity(t_gb_list *gb)
+void ft_ext_remove_list(t_gb_list **gb, t_ext_list *root)
 {
-	t_ext_list **aux;
-	int size;
-	int	i;
+	int i;
+	t_list	*aux;
 
-	size = gb->capacity * 2;
-	aux = ft_calloc(size, sizeof(t_ext_list *));
-	if (!aux)
-		return (1);
+	if (!gb || !root)
+		return ;
 	i = 0;
-	while (i < gb->capacity)
+	while (i < gb[0]->capacity)
 	{
-		aux[i] = gb->roots[i];
+		if (gb[0]->roots[i] && gb[0]->roots[i] == root)
+			break;
 		i++;
 	}
-	gb->capacity = size;
-	free(gb->roots);
-	gb->roots = aux;
-	return(0);
+	if (i == gb[0]->capacity)
+		return ;
+	ft_ext_free_all(gb[0]->roots[i]);
+	ft_gb_compact_roots(gb);
+	return ;
 }

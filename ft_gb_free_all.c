@@ -6,13 +6,13 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:27:05 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/17 19:26:22 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:13:54 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void gb_free_all(t_gb_list **gb)
+void ft_gb_free_all(t_gb_list **gb)
 {
 	int i;
 	if (!gb[0])

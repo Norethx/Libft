@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/17 21:00:10 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:13:38 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,29 @@ typedef struct s_list {
 	void			*content;
 	struct s_list	*next;
 	struct s_list	*prev;
-	int				marked;
-}   t_list;
+	int					marked;
+}	t_list;
+
+typedef struct s_ctrl_lst {
+	t_list				*c_node;
+	struct s_ctrl_lst	*next;
+	struct s_ctrl_lst	*prev;
+	int					marked;
+}	t_ctrl_lst;
 
 typedef struct s_ext_list {
-	t_list			*head;
-	t_list			*tail;
+	t_list	*head;
+	t_list	*tail;
 }	t_ext_list;
 
+typedef struct s_ext_clist {
+	t_ctrl_lst	*head;
+	t_ctrl_lst	*tail;
+}	t_ext_clist;
 typedef struct s_gb_list {
-	t_ext_list		**roots;
-	int				count;
-	int				capacity;
+	t_ext_clist	**roots;
+	int			count;
+	int			capacity;
 }	t_gb_list;
 
 int		ft_isalpha(int c);
@@ -101,9 +112,9 @@ void				*ft_cleanls(t_ext_list **lst);
 int					ft_lst_content_substr(t_list **lst, int loc, char *sec);
 
 t_gb_list			*ft_gb_init(void);
-int					gb_expand_capacity(t_gb_list *gb);
-void				ft_ext_free_all(t_ext_list *lst);
-void				gb_free_all(t_gb_list *gb);
+int					ft_gb_expand_capacity(t_gb_list *gb);
+void				ft_ext_free_all(t_ext_list **lst);
+void				ft_gb_free_all(t_gb_list *gb);
 void				ft_gb_compact_roots(t_gb_list **gb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/17 14:47:52 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:05:49 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_ext_free_all(t_ext_list **lst)
 		lst[0]->head = aux->next;
 		ft_lstdelone(aux, &free);
 	}
+	lst[0]->tail = NULL;
 	free(lst[0]);
 	lst[0] = NULL;
 	return ;
