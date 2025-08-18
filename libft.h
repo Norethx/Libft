@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/16 20:06:16 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/17 21:00:10 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
+char	*ft_uitoa_base(unsigned int n, char *base);
+char	*ft_lltoa(long long n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_ulltoa_base(unsigned long long n, char *base);
+char	*ft_memtoa_base(unsigned long long n, char *base);
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -86,15 +92,18 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 int		ft_lstiter(t_list *lst, unsigned int (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char	*ft_uitoa_base(unsigned int n, char *base);
-char	*ft_lltoa(long long n);
-char	*ft_uitoa(unsigned int n);
-char	*ft_ulltoa_base(unsigned long long n, char *base);
-char	*ft_memtoa_base(unsigned long long n, char *base);
 void	ft_lstsort(t_list *lst);
+
 int		ft_printf(const char *str, ...);
+
 char				*get_next_line(int fd);
 void				*ft_cleanls(t_ext_list **lst);
 int					ft_lst_content_substr(t_list **lst, int loc, char *sec);
+
+t_gb_list			*ft_gb_init(void);
+int					gb_expand_capacity(t_gb_list *gb);
+void				ft_ext_free_all(t_ext_list *lst);
+void				gb_free_all(t_gb_list *gb);
+void				ft_gb_compact_roots(t_gb_list **gb);
 
 #endif

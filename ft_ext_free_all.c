@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_ext_free_all.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 11:11:40 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/17 14:47:21 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/17 14:47:52 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **lst, void (*del)(void *))
+void	ft_ext_free_all(t_ext_list **lst)
 {
-	if (lst[0] == 0 || del == 0)
+	t_list	*aux;
+
+	if (!lst[0])
 		return ;
-	(del)(lst[0]->content);
+	while (lst[0]->head)
+	{
+		aux = lst[0]->head;
+		lst[0]->head = aux->next;
+		ft_lstdelone(aux, &free);
+	}
 	free(lst[0]);
 	lst[0] = NULL;
+	return ;
 }
-
