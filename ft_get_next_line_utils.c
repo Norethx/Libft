@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:03:22 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/16 22:29:40 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/18 13:59:58 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ int	ft_lst_content_substr(t_list **lst, int loc, char *sec)
 	aux->content = new_str;
 	return (0);
 }
-

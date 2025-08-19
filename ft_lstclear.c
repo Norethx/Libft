@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 11:38:52 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/07/25 11:23:43 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:04:38 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_ext_list **lst, void (*del)(void *))
 {
 	t_list	*aux;
 
-	if (*lst == ((void *)0) || del == ((void *)0))
+	if (!*lst || !del || !lst[0]->head)
 		return ;
-	while (*lst)
+	while (lst[0]->head)
 	{
-		aux = *lst;
-		*lst = aux->next;
+		aux = lst[0]->head;
+		lst[0]->head = aux->next;
 		ft_lstdelone(aux, (del));
 	}
-	*lst = ((void *)0);
+	lst[0]->tail = NULL;
+	free(lst[0]);
+	lst[0] = NULL;
 	return ;
 }

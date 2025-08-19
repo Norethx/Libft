@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ext_free_all.c                                  :+:      :+:    :+:   */
+/*   ft_gb_calloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 13:59:26 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/16 11:24:58 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/19 17:45:24 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ext_free_all(t_ext_list **lst)
+t_list	*ft_gb_calloc(t_ext_list **lst, size_t nmemb, size_t size)
 {
-	t_list	*aux;
+	t_list *new;
 
-	if (!lst[0])
-		return ;
-	while (lst[0]->head)
+	if (!*lst)
+		return (NULL);
+	new = ft_calloc(1, sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = ft_calloc(nmemb, size);
+	if (!new->content)
 	{
-		aux = lst[0]->head;
-		lst[0]->head = aux->next;
-		ft_lstdelone(aux, &free);
+		free(new);
+		return(NULL);
 	}
-	lst[0]->tail = NULL;
-	free(lst[0]);
-	lst[0] = NULL;
-	return ;
+	ft_lstadd_back(lst, new);
+	return (new);
 }

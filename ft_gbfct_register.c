@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ext_free_all.c                                  :+:      :+:    :+:   */
+/*   ft_gbfct_register.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 13:59:26 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/08/19 15:07:46 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/19 15:40:42 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ext_free_all(t_ext_list **lst)
+t_list *ft_gbfct_register(t_ext_list **lst,void *content)
 {
-	t_list	*aux;
+	t_list *new;
 
-	if (!lst[0])
-		return ;
-	while (lst[0]->head)
+	if (!content || !*lst)
+		return (NULL);
+	new = malloc(sizeof(t_list));
+	if (!new)
 	{
-		aux = lst[0]->head;
-		lst[0]->head = aux->next;
-		ft_lstdelone(aux, &free);
+		free(content);
+		return (NULL);
 	}
-	lst[0]->tail = NULL;
-	free(lst[0]);
-	lst[0] = NULL;
-	return ;
+	new->content = content;
+	ft_lstadd_back(lst, new);
+	return (new);
 }

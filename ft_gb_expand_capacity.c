@@ -6,17 +6,17 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:05:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 02:13:46 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/19 13:30:47 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_gb_expand_capacity(t_gb_list *gb)
+int	ft_gb_expand_capacity(t_gb_list *gb)
 {
-	t_ext_list **aux;
-	int size;
-	int	i;
+	t_ext_list	**aux;
+	int			size;
+	int			i;
 
 	size = gb->capacity * 2;
 	aux = ft_calloc(size, sizeof(t_ext_list *));
@@ -31,5 +31,5 @@ int ft_gb_expand_capacity(t_gb_list *gb)
 	gb->capacity = size;
 	free(gb->roots);
 	gb->roots = aux;
-	return(0);
+	return (0);
 }

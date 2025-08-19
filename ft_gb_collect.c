@@ -1,31 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ext_free_all.c                                  :+:      :+:    :+:   */
+/*   ft_gb_collect.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 13:59:26 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/08/19 17:26:29 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/19 17:26:59 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ext_free_all(t_ext_list **lst)
-{
-	t_list	*aux;
-
-	if (!lst[0])
-		return ;
-	while (lst[0]->head)
-	{
-		aux = lst[0]->head;
-		lst[0]->head = aux->next;
-		ft_lstdelone(aux, &free);
-	}
-	lst[0]->tail = NULL;
-	free(lst[0]);
-	lst[0] = NULL;
-	return ;
-}

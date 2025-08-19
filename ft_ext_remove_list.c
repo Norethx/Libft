@@ -6,15 +6,15 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 02:11:19 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 02:15:20 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/18 13:59:33 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_ext_remove_list(t_gb_list **gb, t_ext_list *root)
+void	ft_ext_remove_list(t_gb_list **gb, t_ext_list *root)
 {
-	int i;
+	int		i;
 	t_list	*aux;
 
 	if (!gb || !root)
@@ -23,7 +23,7 @@ void ft_ext_remove_list(t_gb_list **gb, t_ext_list *root)
 	while (i < gb[0]->capacity)
 	{
 		if (gb[0]->roots[i] && gb[0]->roots[i] == root)
-			break;
+			break ;
 		i++;
 	}
 	if (i == gb[0]->capacity)

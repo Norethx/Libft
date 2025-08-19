@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ext_free_all.c                                  :+:      :+:    :+:   */
+/*   ft_gb_register.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:31:18 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/18 13:59:26 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/08/19 13:23:51 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/19 13:51:22 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_ext_free_all(t_ext_list **lst)
+int ft_gb_register(t_gb_list **gb, t_ext_list *new)
 {
-	t_list	*aux;
-
-	if (!lst[0])
-		return ;
-	while (lst[0]->head)
-	{
-		aux = lst[0]->head;
-		lst[0]->head = aux->next;
-		ft_lstdelone(aux, &free);
-	}
-	lst[0]->tail = NULL;
-	free(lst[0]);
-	lst[0] = NULL;
-	return ;
+	if (!*gb || !new)
+		return (-1);
+	ft_gb_compact_roots(gb);
+	if (gb[0]->capacity == gb[0]->count && ft_gb_expand_capacity(gb[0]))
+		return (-1);
+	gb[0]->roots[gb[0]->count] = new;
+	gb[0]->count++;
+	return(gb[0]->count - 1);
 }
