@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gb_register.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 13:23:51 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/19 13:51:22 by rgomes-d         ###   ########.fr       */
+/*   Created: 2025/07/15 13:51:33 by rgomes-d          #+#    #+#             */
+/*   Updated: 2025/08/20 21:22:06 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_gb_register(t_gb_list **gb, t_ext_list *new)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (!*gb || !new)
-		return (-1);
-	ft_gb_compact_roots(gb);
-	if (gb[0]->capacity == gb[0]->count && ft_gb_expand_capacity(gb[0]))
-		return (-1);
-	gb[0]->roots[gb[0]->count] = new;
-	gb[0]->count++;
-	return(gb[0]->count - 1);
+	unsigned int	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0'))
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

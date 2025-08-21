@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/19 16:01:30 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:21:56 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,15 @@ typedef struct s_ext_list
 	t_list				*tail;
 }						t_ext_list;
 
+typedef struct s_root_list
+{
+	char				*categ;
+	t_ext_list			*lst;
+}						t_root_list;
+
 typedef struct s_gb_list
 {
-	t_ext_list			**roots;
+	t_root_list			**roots;
 	int					count;
 	int					capacity;
 }						t_gb_list;
@@ -63,6 +69,7 @@ int						ft_tolower(int c);
 char					*ft_strchr(char *s, int c);
 char					*ft_strrchr(char *s, int c);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
+int						ft_strcmp(const char *s1, const char *s2);
 void					*ft_memchr(const void *s, int c, size_t n);
 int						ft_memcmp(const void *s1, const void *s2, size_t n);
 char					*ft_strnstr(const char *big, const char *little,
@@ -94,7 +101,7 @@ void					ft_lstadd_front(t_ext_list **lst, t_list *new);
 int						ft_lstsize(t_list *lst);
 t_list					*ft_lstlast(t_list *lst);
 void					ft_lstadd_back(t_list **lst, t_list *new);
-void					ft_lstdelone(t_list *lst, void (*del)(void *));
+void					ft_lstdelone(t_list **lst, void (*del)(void *));
 void					ft_lstclear(t_list **lst, void (*del)(void *));
 int						ft_lstiter(t_list *lst, unsigned int (*f)(void *));
 t_list					*ft_lstmap(t_list *lst, void *(*f)(void *),
@@ -107,10 +114,18 @@ char					*get_next_line(int fd);
 void					*ft_cleanls(t_ext_list **lst);
 int						ft_lst_content_substr(t_list **lst, int loc, char *sec);
 
-t_gb_list				*ft_gb_init(void);
+
 int						ft_gb_expand_capacity(t_gb_list *gb);
 void					ft_ext_free_all(t_ext_list **lst);
 void					ft_gb_free_all(t_gb_list *gb);
 void					ft_gb_compact_roots(t_gb_list **gb);
+t_gb_list				*ft_gb_init(int capacity);
+t_list					*ft_gbfct_register(t_ext_list **lst, void *content);
+t_ext_list				*ft_ext_newlst(void);
+t_root_list				*ft_root_newlst(void);
+t_list					*ft_gb_calloc(t_ext_list **lst, size_t nmemb, size_t size);
+t_ext_list				*ft_gb_new_root(char *categ);
+void 					*ft_gb_start(int categ);
+int						ft_root_register(t_list *new, const char *categ)
 
 #endif
