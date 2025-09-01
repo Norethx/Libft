@@ -6,11 +6,11 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:51:33 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/08/20 21:22:06 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/09/01 19:25:43 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "gc.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
