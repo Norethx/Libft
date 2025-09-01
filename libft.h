@@ -6,7 +6,7 @@
 /*   By: rgomes-d <rgomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 09:57:31 by rgomes-d          #+#    #+#             */
-/*   Updated: 2025/09/01 19:53:36 by rgomes-d         ###   ########.fr       */
+/*   Updated: 2025/09/01 20:41:06 by rgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # include <fcntl.h>
-# include <gc/gc.h>
+# include "gc/gc.h"
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
